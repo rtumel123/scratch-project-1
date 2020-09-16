@@ -24,7 +24,36 @@ export const createRecipe = (addRecipeObj) => ({
   payload: addRecipeObj
 })
 
+export const showModal = () => ({
+  type: types.SHOW_MODAL,
+  payload: null
+})
 
+export const closeModal = () => ({
+  type: types.CLOSE_MODAL,
+  payload: null
+})
+
+
+export const addName = (name) => ({
+  type: types.ADD_NAME,
+  payload: name
+})
+
+export const addInstructions = (instructions) => ({
+  type: types.ADD_INSTRUCTIONS,
+  payload: instructions
+})
+
+export const addIngredients = (ingredients) => ({
+  type: types.ADD_INGREDIENTS,
+  payload: ingredients
+})
+
+export const addImageLink = (imageUrl) => ({
+  type: types.ADD_IMAGELINK,
+  payload: imageUrl
+})
 
 
 
@@ -113,23 +142,3 @@ export const addRecipe = (data) => {
       .catch(() => dispatch(itemsHasErrored(true)));
     }
 }
-
-export const updateName = (data) => ({
-  type: types.UPDATE_NAME,
-  payload: data
-})
-
-export const updateInstructions = (data) => ({
-  type: types.UPDATE_INSTRUCTIONS,
-  payload: data
-})
-
-export const updateIngredients = (data) => ({
-  type: types.UPDATE_INGREDIENTS,
-  payload: data
-})
-
-export const updateImageLink = (data) => ({
-  type: types.UPDATE_IMAGELINK,
-  payload: data
-})

@@ -4,31 +4,17 @@ import * as types from '../actions/actionTypes'
 //set initial state
 const initialState = {
     name: '',
-    imageLink: '',
+    imagelink: '',
     ingredients: '',
     instructions: '',
-    recipesList: [
-    { name: 'test cvxb',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: 'zsdgsa sadgfasd dsfa',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: ' asdjfhasdf',
-      imageLink: 'ttps://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: 'asdfdsa',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: 'mac n cheese',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'}],
-    // creator: 1,
+    recipesList: [],
+    showModal: false,
+    modal: {
+      addName: '',
+      addInstructions: '',
+      addIngredients: '',
+      addimagelink: '',
+    }
   }
   // retrievedRecipe: {},
   // itemsHaveErrored: false,
@@ -46,10 +32,10 @@ const recipeReducer = (state = initialState, action) => {
     //return updated state
     case types.RETRIEVE_RECIPE: //DEPENDS ON THE RETURNED OBJECT FROM BACKEND
      const newRecipe = {
-       name: state.name,
+       name: action.payload.name,
        ingredients: action.payload.ingredients,
        instructions: action.payload.instructions,
-       imageLink: action.payload.imageLink,
+       imagelink: action.payload.imagelink,
      }
      recipesList = state.recipesList.slice();
      recipesList.push(newRecipe);
@@ -57,7 +43,7 @@ const recipeReducer = (state = initialState, action) => {
         ...state,
         recipesList,
         name: '',
-        imageLink: '',
+        imagelink: '',
         ingredients: '',
         instructions: '',
       }
@@ -68,17 +54,66 @@ const recipeReducer = (state = initialState, action) => {
         //recipesList: [],
         name: action.payload
       }
-    //STRETCH: Use when modal has been created
-    case types.CREATE_RECIPE:
-      itemsAreLoading = action.payload;
+    case types.SHOW_MODAL:
       return {
         ...state,
-        itemsAreLoading
+        showModal: true,
       }
-      default: 
-      return state; 
+    case types.CLOSE_MODAL:
+      return {
+        ...state,
+        showModal: false,
+      }
+
+    case types.UPDATE_NAME:
+      return {
+        ...state,
+        modal : {
+          ...state.modal,
+          addName: action.payload
+        }
+      }
+    
+    case types.UPDATE_INSTRUCTIONS:
+      return {
+        ...state,
+        modal : {
+          ...state.modal,
+          addInstructions: action.payload
+        }
+      }
+
+    case types.UPDATE_INGREDIENTS:
+      return {
+        ...state,
+        modal : {
+          ...state.modal,
+          addingredients: action.payload
+        }
+      }
+
+    case types.UPDATE_IMAGELINK:
+      return {
+        ...state,
+        newRecipe : {
+          ...state.modal,
+          addImagelink: action.payload
+        }
+      }
+
+      case types.CREATE_RECIPE:
+      
+
+
+        return {
+          ...state,
+        }
+        default: 
+        return state; 
+    }
   }
-}
+    //STRETCH: Use when modal has been created
+   
 
 //     case types.ITEMS_FETCH_DATA_SUCCESS:
 //       recipesList = action.payload;
@@ -87,45 +122,6 @@ const recipeReducer = (state = initialState, action) => {
 //         recipesList
 //       }
 
-//     case types.UPDATE_NAME:
-//       return {
-//         ...state,
-//         newRecipe : {
-//           ...state.newRecipe,
-//           name: action.payload
-//         }
-//       }
-    
-//     case types.UPDATE_INSTRUCTIONS:
-//       return {
-//         ...state,
-//         newRecipe : {
-//           ...state.newRecipe,
-//           instructions: action.payload
-//         }
-//       }
 
-//     case types.UPDATE_INGREDIENTS:
-//       return {
-//         ...state,
-//         newRecipe : {
-//           ...state.newRecipe,
-//           ingredients: action.payload
-//         }
-//       }
-
-//     case types.UPDATE_IMAGELINK:
-//       return {
-//         ...state,
-//         newRecipe : {
-//           ...state.newRecipe,
-//           imageLink: action.payload
-//         }
-//       }
-
-//     default: 
-//       return state; 
-//   }
-// }
 
 export default recipeReducer

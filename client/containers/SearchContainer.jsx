@@ -4,6 +4,7 @@ import * as actions from '../actions/actions'
 import { connect } from 'react-redux';
 import SearchComponent from '../components/SearchComponent.jsx';
 import OutputContainer from './OutputContainer.jsx'
+import AddRecipe from '../components/AddRecipe.jsx'
 
 const mapStateToProps = (state) => ({
   recipesList: state.recipes.recipesList, //pass down recipesList array
@@ -28,6 +29,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <div className="main">
+        <AddRecipe />
         <SearchComponent
         dispatchRecipe={this.props.newSearch}
         handleClick={this.props.retrieveRecipe}
