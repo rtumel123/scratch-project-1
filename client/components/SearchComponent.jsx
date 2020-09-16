@@ -13,7 +13,7 @@ class SearchComponent extends Component {
   checkNow() {
     return axios
       .post(
-        "http://localhost:3000/",
+        "http://localhost:3000/api/searchRecipes",
         {
           name: this.props.name,
         }
@@ -23,7 +23,7 @@ class SearchComponent extends Component {
           this.props.handleClick({
             ingredients: recipe.ingredients,
             instructions: recipe.instructions,
-            imageLink: recipe.imageLink,
+            imagelink: recipe.imagelink,
           })
         })
       )
@@ -37,7 +37,7 @@ class SearchComponent extends Component {
         <input
         id = 'input'
         type = "text"
-        onChange = {e => props.dispatchRecipe(e.target.value)}
+        onChange = {e => this.props.dispatchRecipe(e.target.value)}
       ></input>
       <button onClick ={this.checkNow} >Search</button>
     </div>
