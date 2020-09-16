@@ -39,7 +39,7 @@ class SearchComponent extends Component {
         type = "text"
         onChange = {e => this.props.dispatchRecipe(e.target.value)}
       ></input>
-      <button onClick ={this.checkNow} >Search</button>
+      <button className='searchButton' onClick ={this.checkNow} >Search</button>
     </div>
   )}
 
