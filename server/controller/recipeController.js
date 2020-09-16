@@ -51,11 +51,11 @@ recipeController.searchRecipes = (req, res, next) => {
 // middleware to addRecipe to db
 recipeController.addRecipe = (req, res, next) => {
   // destructure all db columns from req.body obj
-  const { name, instructions, ingredients, img_link, created_by } = req.body;
+  const { name, instructions, ingredients, imagelink, created_by } = req.body;
   // store destructured variables in values array
-  const values = [name, instructions, ingredients, img_link, created_by];
+  const values = [name, instructions, ingredients, imagelink, created_by];
   // query to add user input recipe into recipes table
-  const addRecipe = `INSERT INTO recipes (name, instructions, img_link, ingredients, created_by) VALUES ($1, $2, $3, $4, $5)`;
+  const addRecipe = `INSERT INTO recipes (name, instructions, imagelink, ingredients, created_by) VALUES ($1, $2, $3, $4, $5)`;
   db.query(addRecipe, values)
   .then(() => console.log('Successfully added new recipe!'))
   .then(() => next())

@@ -4,31 +4,10 @@ import * as types from '../actions/actionTypes'
 //set initial state
 const initialState = {
     name: '',
-    imageLink: '',
+    imagelink: '',
     ingredients: '',
     instructions: '',
-    recipesList: [
-    { name: 'test cvxb',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: 'zsdgsa sadgfasd dsfa',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: ' asdjfhasdf',
-      imageLink: 'ttps://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: 'asdfdsa',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'},
-    { name: 'mac n cheese',
-      imageLink: 'https://stackoverflow.com/questions/40342381/react-redux-create-a-search-filterasjkdfgsadfghasjkfhg',
-      ingredients: 'sdjfhaqsd kjsfdhia 123 sdfhk 324hisf saff asjfg asl da saKD Ga d',
-      instructions: 'sdbfgajskldhfasdhf;asfhasfsa;;; asdf sad fas df sd;hf;asdf ;dsfhjsd ;fsd sda;fhsf;h  sfdohsdfks df sd fksdh fsd fssdf s dfldflsdflksdflsdflsdfdsafflkdsakfjkdsal;fjl;dfjas;dfjs;dfjsdaadsjghfdlashfaskldhfaskdhflaskfhlafhjsa;dfh;asf;safj;safhj;lsafjlsakdshgfj'}],
-    // creator: 1,
+    recipesList: [],
   }
   // retrievedRecipe: {},
   // itemsHaveErrored: false,
@@ -49,7 +28,7 @@ const recipeReducer = (state = initialState, action) => {
        name: state.name,
        ingredients: action.payload.ingredients,
        instructions: action.payload.instructions,
-       imageLink: action.payload.imageLink,
+       imagelink: action.payload.imagelink,
      }
      recipesList = state.recipesList.slice();
      recipesList.push(newRecipe);
@@ -57,7 +36,7 @@ const recipeReducer = (state = initialState, action) => {
         ...state,
         recipesList,
         name: '',
-        imageLink: '',
+        imagelink: '',
         ingredients: '',
         instructions: '',
       }

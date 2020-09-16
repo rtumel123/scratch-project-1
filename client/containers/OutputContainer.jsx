@@ -23,7 +23,7 @@ class OutputContainer extends Component {
       return (
         < Recipe
         name={recipe.name}
-        imageLink={recipe.imageLink}
+        imagelink={recipe.imagelink}
         instructions={recipe.instructions}
         ingredients={recipe.ingredients}
         />

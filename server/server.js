@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const apiRouter = require('./router/api.js');
+const cors = require('cors');
 
 const PORT = 3000;
+
+app.use(cors());
 
 // Parsing request body
 app.use(express.json());
