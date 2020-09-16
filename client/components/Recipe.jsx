@@ -8,7 +8,7 @@ const Recipe = props => {
     <div className='recipe'>
       <div className='recipeName'>{name}</div>
       <div className='recipeImg'>
-        {imageLink}
+        <img src={imageLink} />
       </div>
       <div>
         <div className='instructions'>
