@@ -64,8 +64,14 @@ const recipeReducer = (state = initialState, action) => {
         ...state,
         showModal: false,
       }
+      case types.SET_MODAL:
+        console.log(state.showModal)
+        return {
+          ...state,
+          showModal: !state.showModal,
+        }
 
-    case types.UPDATE_NAME:
+    case types.ADD_NAME:
       return {
         ...state,
         modal : {
@@ -74,7 +80,7 @@ const recipeReducer = (state = initialState, action) => {
         }
       }
     
-    case types.UPDATE_INSTRUCTIONS:
+    case types.ADD_INSTRUCTIONS:
       return {
         ...state,
         modal : {
@@ -83,7 +89,7 @@ const recipeReducer = (state = initialState, action) => {
         }
       }
 
-    case types.UPDATE_INGREDIENTS:
+    case types.ADD_INGREDIENTS:
       return {
         ...state,
         modal : {
@@ -92,7 +98,7 @@ const recipeReducer = (state = initialState, action) => {
         }
       }
 
-    case types.UPDATE_IMAGELINK:
+    case types.ADD_IMAGELINK:
       return {
         ...state,
         newRecipe : {
@@ -102,11 +108,15 @@ const recipeReducer = (state = initialState, action) => {
       }
 
       case types.CREATE_RECIPE:
-      
-
-
         return {
           ...state,
+          modal : {
+            ...state.modal,
+            addName:'',
+            addingredients:'',
+            addInstructions:'',
+            addImagelink:''
+          }
         }
         default: 
         return state; 

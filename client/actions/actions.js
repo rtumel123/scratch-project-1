@@ -34,6 +34,11 @@ export const closeModal = () => ({
   payload: null
 })
 
+export const setModal = () => ({
+  type: types.SET_MODAL,
+  payload: null
+})
+
 
 export const addName = (name) => ({
   type: types.ADD_NAME,

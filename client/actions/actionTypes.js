@@ -3,6 +3,7 @@ export const RETRIEVE_RECIPE = "RETRIEVE_RECIPE";
 export const SET_SEARCH = "SET_SEARCH"
 export const SHOW_MODAL = "SHOW_MODAL"
 export const CLOSE_MODAL = "CLOSE_MODAL"
+export const SET_MODAL = "SET_MODAL"
 export const CREATE_RECIPE = "CREATE_RECIPE";
 export const ADD_NAME = "ADD_NAME";
 export const ADD_INSTRUCTIONS = "ADD_INSTRUCTIONS";
