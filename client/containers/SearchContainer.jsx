@@ -28,6 +28,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <div className="main">
+        <h1 className='title'>Recipe.io</h1>
         <SearchComponent
         dispatchRecipe={this.props.newSearch}
         handleClick={this.props.retrieveRecipe}
