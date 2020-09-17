@@ -9,7 +9,6 @@ html{
   min-height: 100%;
 }
 
-
 #header {
   display:flex;
   justify-content:center;
@@ -23,6 +22,27 @@ html{
   padding-top: 3%;
   margin-bottom: 10px;
   color: #0a1f3d;
+}
+.openModal{
+  background-color: rgb(167, 198, 224);
+  width: fit-content;
+  padding: 10px;
+  border: 1px solid rgb(89, 109, 197);
+  border-radius: 5px;
+}
+.modalButton{
+  color: rgb(22, 67, 134);
+  position: absolute;
+  top: 103px;
+  left: 10px;
+}
+
+.modalSubmit {
+  color: rgb(22, 67, 134);
+}
+
+.inputFields {
+  line-height: 1px;
 }
 
 .recipeContainer {
