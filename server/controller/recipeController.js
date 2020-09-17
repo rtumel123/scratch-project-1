@@ -27,13 +27,20 @@ recipeController.getData = (req, res, next) => {
 recipeController.searchRecipes = (req, res, next) => {
   // destructure 'name' from req.body obj
   const { name } = req.body;
+
+  // reassign name to Title Case, added '%' at beginning and end for query to execute with LIKE keyword
+  const newName = '%' + name.toLowerCase().split(' ').map(word => 
+    (word.charAt(0).toUpperCase() + word.slice(1))).join(' ') + '%';
+  
+  console.log('title cased name:', newName);
   // store name var in array, assigned to 'values'
-  const values = [name];
+  const values = [newName];
   // query to retrieve all recipes from table where name matches part of user input
-  const searchQuery = `SELECT * FROM recipes WHERE name = $1`;
+  const searchQuery = `SELECT * FROM recipes WHERE name LIKE $1`;
 
   db.query(searchQuery, values)
   .then(data => {
+    console.log(data.rows);
     // storing searchRecipes as prop on res.locals object,
     res.locals.searchRecipes = data.rows;
     return next();
@@ -52,8 +59,12 @@ recipeController.searchRecipes = (req, res, next) => {
 recipeController.addRecipe = (req, res, next) => {
   // destructure all db columns from req.body obj
   const { name, instructions, ingredients, imagelink, created_by } = req.body;
+
+  const newName = name.toLowerCase().split(' ').map(word => 
+    (word.charAt(0).toUpperCase() + word.slice(1))).join(' ');
+
   // store destructured variables in values array
-  const values = [name, instructions, ingredients, imagelink, created_by];
+  const values = [newName, instructions, ingredients, imagelink, created_by];
   // query to add user input recipe into recipes table
   const addRecipe = `INSERT INTO recipes (name, instructions, imagelink, ingredients, created_by) VALUES ($1, $2, $3, $4, $5)`;
   db.query(addRecipe, values)

@@ -21,6 +21,7 @@ class SearchComponent extends Component {
       .then((results) =>//results should an array of objects
         results.data.forEach( (recipe) => {
           this.props.handleClick({
+            name: recipe.name,
             ingredients: recipe.ingredients,
             instructions: recipe.instructions,
             imagelink: recipe.imagelink,
