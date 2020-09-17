@@ -3,12 +3,47 @@
   margin-right: auto;
   margin-top: 200px;
 } */
+html{
+  background-image: linear-gradient(140deg, #EADEDB 0%, #9dd1f3 50%, #63addf 75%);
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
 
 #header {
   display:flex;
   justify-content:center;
   align-items: center;
-  padding-top: 15%;
+}
+
+.title{
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  padding-top: 3%;
+  margin-bottom: 10px;
+  color: #0a1f3d;
+}
+.openModal{
+  background-color: rgb(167, 198, 224);
+  width: fit-content;
+  padding: 10px;
+  border: 1px solid rgb(89, 109, 197);
+  border-radius: 5px;
+}
+.modalButton{
+  color: rgb(22, 67, 134);
+  position: absolute;
+  top: 103px;
+  left: 10px;
+}
+
+.modalSubmit {
+  color: rgb(22, 67, 134);
+  
+}
+
+.inputFields {
+  line-height: 1px;
 }
 
 .recipeContainer {
@@ -20,8 +55,39 @@
   
 }
 
-
 .recipe {
   text-align: center;
   margin: 15px;
+}
+
+.searchButton {
+  margin-left: 5px;
+  color: rgb(22, 67, 134);
+}
+.recipeName {
+  margin-top: 10px;
+  font-size: 2rem;
+}
+.recipeImg {
+  max-width: 500px;
+  max-height: 500px;
+  margin-top: 20px;
+  box-shadow: 3px 3px 8px #888888;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  float:left;
+  max-width: 300px;
+  line-height: 1.5;
+  padding: 10px;
+  border-left: 1px solid black;
+}
+.ingredients{
+  float:right;
+  max-width: 300px;
+  line-height: 1.5;
+  padding: 10px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }

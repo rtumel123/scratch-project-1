@@ -57,7 +57,7 @@ class AddRecipe extends Component {
   render() {
     return (
   
-      <div>
+      <div className='openModal'>
         <form className='inputFields'>
           <p>Recipe Name.</p>
           <input 
@@ -65,19 +65,19 @@ class AddRecipe extends Component {
             placeholder={'Input recipe name here...'}
             onChange={(e) => this.props.addName(e.target.value)}/>
 
-          <p>Instructions. Number each step (eg. “1. Cut tofu into cubes 2. Heat oil in pan”)</p>
+          <p>Instructions: </p>
           <input 
             type="text"
             placeholder={'Input instructions here...'}
             onChange={(e) => this.props.addInstructions(e.target.value)}/>
 
-          <p>Ingredients. Separate each ingredient with a comma (eg. “14oz tofu, 6 cloves garlic”)</p>
+          <p>Ingredients: </p>
           <input
            type="text" 
            placeholder={'Input ingredients here...'}
            onChange={(e) => this.props.addIngredients(e.target.value)}/>
 
-          <p>Image Link.</p>
+          <p>Image Link: </p>
           <input
            type="text"
            placeholder={'Input image link here...'}
@@ -85,7 +85,7 @@ class AddRecipe extends Component {
            
         </form>
         <br/>
-        <button onClick={this.sendNewRecipe}>Submit the recipe</button>
+        <button onClick={this.sendNewRecipe} className='modalSubmit'>Submit the recipe</button>
       </div>
     )
   }

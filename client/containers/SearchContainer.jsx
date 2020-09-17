@@ -33,26 +33,29 @@ class SearchContainer extends Component {
     if (!this.props.showModal) 
     return (
       <div>
+      <h1 className='title'>Recipe.io</h1>
       <SearchComponent
       dispatchRecipe={this.props.newSearch}
       handleClick={this.props.retrieveRecipe}
       name={this.props.name}
       />
-      <button onClick={this.props.setModal}>Add Recipe</button>
+      <button onClick={this.props.setModal} className='modalButton'>Add Recipe</button>
       <OutputContainer />
     </div>
     )
     else {
     return (
       <div className="main">
-        
         <div>
+          <h1 className='title'>Recipe.io</h1>
           <SearchComponent
           dispatchRecipe={this.props.newSearch}
           handleClick={this.props.retrieveRecipe}
           name={this.props.name}
           />
-          <button onClick={this.props.setModal}>Add Recipe</button>
+          <div>
+          <button onClick={this.props.setModal} className='modalButton'>Add Recipe</button>
+          </div>
           <OutputContainer />
         </div>
         <AddRecipe  /> 
