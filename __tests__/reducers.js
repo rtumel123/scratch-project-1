@@ -26,6 +26,13 @@ describe('recipeReducer', () => {
       expect(subject(state, action)).toBe(state);
     });
   });
+  
+  describe('undefined state', () => {
+    it('should return default state when provided an undefined input', () => {
+      const action = { type: 'name' };
+      expect(subject(undefined, action)).toStrictEqual(state);
+    });
+  });
 
 
 
